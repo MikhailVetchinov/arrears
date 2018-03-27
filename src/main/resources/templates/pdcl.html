@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:insert="~{fragments/head::head}">
+</head>
+<body>
+<header th:insert="~{fragments/header::menu}"></header>
+<div class="container">
+    <div class="page">
+        <h1>PDCL</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Deal</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Sum</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="row,iter: ${pdcl}">
+                    <th scope="row" th:text="${iter.index}+1"></th>
+                    <td th:text="${row.date}"></td>
+                    <td><a th:text="${row.customer.name}" th:href="@{'/customers/'+ ${row.customer.id}}"></a></td>
+                    <td><a th:text="${row.deal.description}" th:href="@{'/deals/'+ ${row.deal.id}}"></a></td>
+                    <td th:text="${row.currency}"></td>
+                    <td th:text="${row.sum}" align="right"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

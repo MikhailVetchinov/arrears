@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:insert="~{fragments/head::head}">
+</head>
+<header th:insert="~{fragments/header::menu}"></header>
+<body>
+<div class="container">
+    <div class="page">
+        <h1 th:text="${deal.description}">Deal</h1>
+        <p>
+        <div th:text="'ID сделки: ' + ${deal.id}"></div>
+        <div th:unless="${indebtedness.date}" th:text="'Задолженность отсутсвует'"></div>
+        <div th:if="${indebtedness.date}" th:text="'Общая сумма задолженности: ' + ${indebtedness.value}"></div>
+        <div th:if="${indebtedness.date}" th:text="'Дата начала задолженности: ' + ${indebtedness.date}"></div>
+        </p>
+    </div>
+</div>
+</body>
+</html>
